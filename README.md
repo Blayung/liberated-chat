@@ -2,7 +2,7 @@
 ## What is this?
 It is a minecraft plugin that disables chat reporting.
 
-**The plugin was compiled and tested on 1.19.3, but 1.19, 1.19.1, and 1.19.2 should work fine.**
+**The plugin was compiled and tested on 1.19.3, but 1.19, 1.19.1, and 1.19.2 should work just fine.**
 
 ## How to compile?
 1. Clone the repo: `git clone https://github.com/Blayung/liberated-chat.git; cd liberated-chat`
