@@ -1,0 +1,7 @@
+name: liberated-chat
+version: 1.0.0
+description: A plugin that disables chat reporting.
+author: Blay
+
+api-version: 1.19
+main: com.blay.liberatedchat.LiberatedChat
