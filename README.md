@@ -1,4 +1,4 @@
-# Liberated chat plugin
+# Liberated Chat Plugin
 ## What is this?
 It is a minecraft plugin that disables chat reporting.
 
