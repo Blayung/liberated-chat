@@ -12,23 +12,16 @@ import java.io.File;
 public final class LiberatedChat extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
-        if(new File(this.getDataFolder(), "config.yml").exists()==false){
-            getConfig().options().copyDefaults(true);
-            saveConfig();
-        }
-
         getServer().getPluginManager().registerEvents(this, this);
     }
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        if(getConfig().getBoolean("disable-chat-reporting")){
-            String message="<"+event.getPlayer().getName()+"> "+event.getMessage();
-            getLogger().info(message);
-            for(Player player:event.getRecipients()){
-                player.sendMessage(message);
-            }
-            event.setCancelled(true);
+        String message="<"+event.getPlayer().getName()+"> "+event.getMessage();
+        getLogger().info(message);
+        for(Player player:event.getRecipients()){
+            player.sendMessage(message);
         }
+        event.setCancelled(true);
     }
 }
