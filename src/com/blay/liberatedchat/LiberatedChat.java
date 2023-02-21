@@ -7,8 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-
 public final class LiberatedChat extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
