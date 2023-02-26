@@ -1,3 +1,4 @@
+[![modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)](https://modrinth.com/plugin/liberated-chat)
 # Liberated Chat Plugin
 ## What is this?
 It is a minecraft plugin that disables chat reporting.
