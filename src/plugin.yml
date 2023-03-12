@@ -1,7 +1,8 @@
 name: liberated-chat
-version: 1.0.2
-description: A plugin that disables chat reporting.
+version: 1.0.3
+description: Probably the simplest minecraft plugin that disables chat reporting.
 author: Blay
+website: modrinth.com/plugin/liberated-chat
 
 api-version: 1.19
 main: com.blay.liberatedchat.LiberatedChat
