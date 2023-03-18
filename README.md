@@ -3,7 +3,7 @@
 ## What is this?
 It is a minecraft plugin that disables chat reporting.
 
-![**The plugin was compiled and tested on 1.19.3, but 1.19, 1.19.1, and 1.19.2 should work just fine.**](https://img.shields.io/static/v1?label=SUPPORTED%20MINECRAFT%20VERSIONS&message=1.19%20|%201.19.1%20|%201.19.2%20|%201.19.3&color=yellowgreen&style=for-the-badge)
+![**This plugin currently supports the 1.19.x version of minecraft.**](https://img.shields.io/static/v1?label=SUPPORTED%20MINECRAFT%20VERSIONS&message=1.19%20|%201.19.1%20|%201.19.2%20|%201.19.3%20|%201.19.4&color=yellowgreen&style=for-the-badge)
 
 ## Downloads
 You can download this plugin on modrinth. [https://modrinth.com/plugin/liberated-chat](https://modrinth.com/plugin/liberated-chat)
