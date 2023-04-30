@@ -1,2 +1,4 @@
-target/
-compile.sh
+.gradle/
+build/
+out/
+classes/
