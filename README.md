@@ -10,5 +10,5 @@ You can download this plugin on modrinth. [https://modrinth.com/plugin/liberated
 
 ## How to compile?
 1. Clone the repo: `git clone https://github.com/Blayung/liberated-chat.git; cd liberated-chat`
-4. Compile the plugin: `./gradlew build`
-5. Now the plugin jar file should be here: `./build/liberated-chat-1.0.4.jar`
+2. Compile the plugin: `./gradlew build`
+3. Now the plugin jar file should be here: `./build/liberated-chat-1.0.4.jar`
