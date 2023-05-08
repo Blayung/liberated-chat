@@ -1,18 +1,16 @@
 package com.blay.liberatedchat;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.ChatColor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Arrays;
 
 public final class LiberatedChat extends JavaPlugin implements Listener {
     @Override
@@ -22,34 +20,54 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
     }
 
     @EventHandler(priority = EventPriority.LOW)
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
+    public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
+        event.setCancelled(true);
         String message = "<" + event.getPlayer().getName() + "> " + event.getMessage();
         getLogger().info(message);
         for (Player player : event.getRecipients()) {
             player.sendMessage(message);
         }
-        event.setCancelled(true);
     }
+
+    public final List<String> whisperCommands = Arrays.asList("/w", "/minecraft:w", "/me", "/minecraft:me", "/msg", "/minecraft:msg", "/tell", "/minecraft:tell");
 
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
-        Player player = event.getPlayer();
-        List<String> msgCommands = new ArrayList<>(Arrays.asList("msg", "minecraft:msg", "tell", "minecraft:tell", "w", "minecraft:w"));
-        String command = event.getMessage().substring(1).toLowerCase().split("\\s+")[0];
-        if(!msgCommands.contains(command) || event.getMessage().substring(1).split("\\s+").length < 3) return;
-        String receiverName = event.getMessage().substring(1).split("\\s+")[1];
-        Player receiver = Bukkit.getPlayer(receiverName);
-        String message = event.getMessage().substring(1).split("\\s+")[2];
+        String command = event.getMessage();
+        if(!whisperCommands.contains(command)){
+            return;
+        }
+
+        String args[] = command.split(" ");
+        if(args.length < 3){
+            return;
+        }
+
         event.setCancelled(true);
 
-        if(receiverName.contains("@")) {
-            player.sendMessage(ChatColor.RED + "Selectors are not allowed");
-        } else if (receiver == null) {
-            player.sendMessage(ChatColor.RED + "Player not found");
-        } else {
-            player.sendMessage("§7§oYou whisper to " + receiverName + ": " + message);
-            receiver.sendMessage("§7§o" + player.getName() + " whispers to you: " + message);
-        }
-    }
+        Player sender = event.getPlayer();
 
+        try {
+            if(args[1].charAt(0)=='@') {
+                sender.sendMessage("§cSelectors (@s, @a...) are not allowed. It is caused by the liberated chat plugin, but we are aiming to fix it soon.");
+                return;
+            }
+        } catch (StringIndexOutOfBoundsException e) {
+            sender.sendMessage("§cInvalid command arguments format: §o" + command);
+            return;
+        }
+
+        Player receiver = Bukkit.getPlayer(args[1]);
+        if (receiver == null) {
+            sender.sendMessage("§cPlayer not found.");
+            return;
+        }
+
+        String message="";
+        for(int i=2; i<args.length; i++){
+            message += args[i];
+        }
+        sender.sendMessage("§7You whisper to " + receiver.getName() + ": " + message);
+        receiver.sendMessage("§7" + sender.getName() + " whispers to you: " + message);
+    }
 }
