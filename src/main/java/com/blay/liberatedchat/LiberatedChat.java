@@ -31,7 +31,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
         event.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
         List<String> msgCommands = new ArrayList<>(Arrays.asList("msg", "minecraft:msg", "tell", "minecraft:tell", "w", "minecraft:w"));
