@@ -4,7 +4,7 @@
 # Liberated Chat Plugin
 ## What is this?
 It is probably the simplest minecraft plugin that disables chat reporting.  
-**MAKE SURE TO DISABLE enforce-secure-profile IN server.properties, OR THE PLUGIN WILL BREAK!**
+**Make sure to disable enforce-secure-profile in server.properties, or the plugin will break!**
 
 ## Downloads
 You can download this plugin on modrinth. [https://modrinth.com/plugin/liberated-chat](https://modrinth.com/plugin/liberated-chat)
