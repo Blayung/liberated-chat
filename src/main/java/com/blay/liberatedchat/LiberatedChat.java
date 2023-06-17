@@ -43,7 +43,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
         Player sender = event.getPlayer();
 
         if(args[1].charAt(0)=='@') {
-            sender.sendMessage("§cSelectors (@s, @a...) are not allowed. It is caused by the liberated chat plugin, but we are aiming to fix it soon.");
+            sender.sendMessage("§cSelectors (@s, @a...) are not allowed in that command. It is caused by the liberated chat plugin, but we are aiming to fix it soon.");
             return;
         }
 
