@@ -1,6 +1,6 @@
 [![modrinth badge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)](https://modrinth.com/plugin/liberated-chat)  
   
-![**This plugin currently supports the 1.19 - 1.20.1 versions of minecraft.**](https://img.shields.io/static/v1?label=SUPPORTED%20MINECRAFT%20VERSIONS&message=1.19%20|%201.19.1%20|%201.19.2%20|%201.19.3%20|%201.19.4%20|%201.20&color=yellowgreen&style=for-the-badge)
+![**This plugin currently supports the 1.19 - 1.20.1 versions of minecraft.**](https://img.shields.io/static/v1?label=SUPPORTED%20MINECRAFT%20VERSIONS&message=1.19%20|%201.19.1%20|%201.19.2%20|%201.19.3%20|%201.19.4%20|%201.20%20|%201.20.1&color=yellowgreen&style=for-the-badge)
 # Liberated Chat Plugin
 ## What is this?
 It is probably the simplest minecraft plugin that disables chat reporting.  
