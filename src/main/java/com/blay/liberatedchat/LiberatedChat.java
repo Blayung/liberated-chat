@@ -34,7 +34,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         String args[] = event.getMessage().split(" ");
-        if(!whisperCommands.contains(args[0]) || args.length < 3){
+        if (!whisperCommands.contains(args[0]) || args.length < 3) {
             return;
         }
 
@@ -42,7 +42,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
 
         Player sender = event.getPlayer();
 
-        if(args[1].charAt(0)=='@') {
+        if (args[1].charAt(0) == '@') {
             sender.sendMessage("§cSelectors (@s, @a...) are not allowed in that command. It is caused by the liberated chat plugin, but we are aiming to fix it soon.");
             return;
         }
@@ -54,7 +54,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
         }
 
         String message="";
-        for(int i=2; i<args.length; i++){
+        for (int i=2; i<args.length; i++){
             message += args[i];
         }
         sender.sendMessage("§7You whisper to " + receiver.getName() + ": " + message);
