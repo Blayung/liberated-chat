@@ -1,12 +1,12 @@
 [![](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)](https://modrinth.com/plugin/liberated-chat)  
-  
-**This plugin currently supports the 1.19 - 1.20.1 versions of minecraft.**  
-**Make sure to disable enforce-secure-profile in server.properties, or the plugin will break!**
 
 # Liberated Chat
 
 ## What is this?
 It is probably the simplest minecraft spigot plugin that disables chat reporting.  
+
+**This plugin currently supports the 1.19 - 1.20.1 versions of minecraft.**  
+**Make sure to disable enforce-secure-profile in server.properties, or the plugin will break!**
 
 ## Downloads
 You can download this plugin on modrinth. [https://modrinth.com/plugin/liberated-chat](https://modrinth.com/plugin/liberated-chat)
