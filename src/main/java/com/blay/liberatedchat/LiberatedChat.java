@@ -9,14 +9,20 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class LiberatedChat extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
-        getLogger().warning("Make sure to disable enforce-secure-profile in server.properties, or the plugin will break!");
+        setServerProperty("enforce-secure-profile", "false");
     }
 
     @EventHandler(priority = EventPriority.LOW)
@@ -57,5 +63,23 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
 
         sender.sendMessage("§7You whisper to " + receiver.getName() + ": " + message);
         receiver.sendMessage("§7" + sender.getName() + " whispers to you: " + message);
+    }
+
+    private void setServerProperty(String propertyName, String value) {
+        Path path = Paths.get(getDataFolder().getParentFile().getAbsolutePath()).getParent().resolve("server.properties");
+
+        try {
+            List<String> lines = Files.readAllLines(path).stream()
+                    .map(line -> {
+                        if (line.startsWith(propertyName + "="))
+                            return propertyName + "=" + value;
+                        return line;
+                    })
+                    .collect(Collectors.toList());
+
+            Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
