@@ -1,16 +1,16 @@
 package com.blay.liberatedchat;
 
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.event.Listener;
-import org.bukkit.event.EventPriority;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 public final class LiberatedChat extends JavaPlugin implements Listener {
     @Override
@@ -24,16 +24,14 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
         event.setCancelled(true);
         String message = "<" + event.getPlayer().getName() + "> " + event.getMessage();
         getLogger().info(message);
-        for (Player player : event.getRecipients()) {
-            player.sendMessage(message);
-        }
+        Bukkit.broadcastMessage(message);
     }
 
     public static final List<String> whisperCommands = Arrays.asList("/w", "/minecraft:w", "/msg", "/minecraft:msg", "/tell", "/minecraft:tell", "/teammsg", "/minecraft:teammsg");
 
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
-        String args[] = event.getMessage().split(" ");
+        String[] args = event.getMessage().split(" ");
         if (!whisperCommands.contains(args[0]) || args.length < 3) {
             return;
         }
@@ -53,10 +51,10 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
             return;
         }
 
-        String message="";
-        for (int i=2; i<args.length; i++){
-            message += args[i];
-        }
+        StringBuilder message = new StringBuilder();
+        for (int i = 2; i < args.length; i++)
+            message.append(args[i]);
+
         sender.sendMessage("§7You whisper to " + receiver.getName() + ": " + message);
         receiver.sendMessage("§7" + sender.getName() + " whispers to you: " + message);
     }
