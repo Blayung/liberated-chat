@@ -33,7 +33,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
         Bukkit.broadcastMessage(message);
     }
 
-    public static final List<String> whisperCommands = Arrays.asList("/w", "/minecraft:w", "/msg", "/minecraft:msg", "/tell", "/minecraft:tell", "/teammsg", "/minecraft:teammsg");
+    public static final List<String> whisperCommands = Arrays.asList("/w", "/minecraft:w", "/msg", "/minecraft:msg", "/tell", "/minecraft:tell");
 
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
