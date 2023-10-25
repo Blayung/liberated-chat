@@ -1,5 +1,8 @@
 package com.blay.liberatedchat;
 
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TranslatableComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -61,8 +64,8 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
         for (int i = 2; i < args.length; i++)
             message.append(args[i]);
 
-        sender.sendMessage("§7You whisper to " + receiver.getName() + ": " + message);
-        receiver.sendMessage("§7" + sender.getName() + " whispers to you: " + message);
+        sender.spigot().sendMessage(new ComponentBuilder(new TranslatableComponent("commands.message.display.outgoing", receiver.getName(), message)).color(ChatColor.GRAY).italic(true).create());
+        receiver.spigot().sendMessage(new ComponentBuilder(new TranslatableComponent("commands.message.display.incoming", sender.getName(), message)).color(ChatColor.GRAY).italic(true).create());
     }
 
     private void setServerProperty(String propertyName, String value) {
