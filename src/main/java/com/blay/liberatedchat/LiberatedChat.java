@@ -47,7 +47,6 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
         event.setCancelled(true);
         String message = "<" + event.getPlayer().getName() + "> " + event.getMessage();
-        getLogger().info(message);
         Bukkit.broadcastMessage(message);
     }
 
