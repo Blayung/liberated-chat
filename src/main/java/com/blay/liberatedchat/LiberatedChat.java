@@ -25,7 +25,22 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
-        setServerProperty("enforce-secure-profile", "false");
+
+        Path path = Paths.get(getDataFolder().getParentFile().getAbsolutePath()).getParent().resolve("server.properties");
+        try {
+            List<String> lines = Files.readAllLines(path).stream()
+                .map(line -> {
+                    if (line.startsWith("enforce-secure-profile")) {
+                        return "enforce-secure-profile=false";
+                    }
+                    return line;
+                })
+                .collect(Collectors.toList());
+
+            Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @EventHandler(priority = EventPriority.LOW)
@@ -61,28 +76,11 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
         }
 
         StringBuilder message = new StringBuilder();
-        for (int i = 2; i < args.length; i++)
+        for (int i = 2; i < args.length; i++) {
             message.append(args[i]);
-
-        sender.spigot().sendMessage(new ComponentBuilder(new TranslatableComponent("commands.message.display.outgoing", receiver.getName(), message)).color(ChatColor.GRAY).italic(true).create());
-        receiver.spigot().sendMessage(new ComponentBuilder(new TranslatableComponent("commands.message.display.incoming", sender.getName(), message)).color(ChatColor.GRAY).italic(true).create());
-    }
-
-    private void setServerProperty(String propertyName, String value) {
-        Path path = Paths.get(getDataFolder().getParentFile().getAbsolutePath()).getParent().resolve("server.properties");
-
-        try {
-            List<String> lines = Files.readAllLines(path).stream()
-                    .map(line -> {
-                        if (line.startsWith(propertyName + "="))
-                            return propertyName + "=" + value;
-                        return line;
-                    })
-                    .collect(Collectors.toList());
-
-            Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
+
+        sender.spigot().sendMessage(new ComponentBuilder(new TranslatableComponent("commands.message.display.outgoing", receiver.getName(), message)).color(ChatColor.GRAY).create());
+        receiver.spigot().sendMessage(new ComponentBuilder(new TranslatableComponent("commands.message.display.incoming", sender.getName(), message)).color(ChatColor.GRAY).create());
     }
 }
