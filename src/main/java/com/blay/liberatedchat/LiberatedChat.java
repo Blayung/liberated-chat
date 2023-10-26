@@ -46,8 +46,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
         event.setCancelled(true);
-        String message = "<" + event.getPlayer().getName() + "> " + event.getMessage();
-        Bukkit.broadcastMessage(message);
+        Bukkit.broadcastMessage("<" + event.getPlayer().getName() + "> " + event.getMessage());
     }
 
     public static final List<String> whisperCommands = Arrays.asList("/w", "/minecraft:w", "/msg", "/minecraft:msg", "/tell", "/minecraft:tell");
