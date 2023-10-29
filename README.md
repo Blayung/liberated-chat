@@ -14,4 +14,4 @@ You can download this plugin on modrinth. [https://modrinth.com/plugin/liberated
 0. Make sure you have jdk 17 and git installed. If not, check these links out: [https://git-scm.com/downloads](https://git-scm.com/downloads), [https://www.oracle.com/pl/java/technologies/downloads/#java17](https://www.oracle.com/pl/java/technologies/downloads/#java17). You can also try to install these programs with your distro's package manager.
 1. Clone the repo: `git clone https://github.com/Blayung/liberated-chat.git; cd liberated-chat`
 2. Compile the plugin: `./gradlew build`
-3. Now the plugin jar file should be here: `./build/liberated-chat-1.1.6.jar`
+3. Now the plugin jar file should be here: `./build/liberated-chat-1.2.0.jar`
