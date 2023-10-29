@@ -14,7 +14,7 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT"
 }
 
-archivesBaseName = "liberated-chat-1.1.5"
+archivesBaseName = "liberated-chat-1.1.6"
 
 def javaVersion = JavaVersion.VERSION_17
 
