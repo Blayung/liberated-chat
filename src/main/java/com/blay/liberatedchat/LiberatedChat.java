@@ -3,7 +3,6 @@ package com.blay.liberatedchat;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TranslatableComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -28,16 +27,23 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
 
         Path path = Paths.get(getDataFolder().getParentFile().getAbsolutePath()).getParent().resolve("server.properties");
         try {
+            boolean[] replaced = {false};
+
             List<String> lines = Files.readAllLines(path).stream()
                 .map(line -> {
-                    if (line.startsWith("enforce-secure-profile")) {
+                    if (line.equals("enforce-secure-profile=true")) {
+                        replaced[0] = true;
                         return "enforce-secure-profile=false";
                     }
                     return line;
                 })
                 .collect(Collectors.toList());
 
-            Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+            if (replaced[0]) {
+                Files.write(path, lines, StandardOpenOption.TRUNCATE_EXISTING);
+                getLogger().warning("enforce-secure-profile in server.properties was set to true. The liberated chat plugin automatically changed it to false and now it restarts the server.");
+                getServer().spigot().restart();
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -46,7 +52,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onAsyncPlayerChat(AsyncPlayerChatEvent event) {
         event.setCancelled(true);
-        Bukkit.broadcastMessage("<" + event.getPlayer().getName() + "> " + event.getMessage());
+        getServer().broadcastMessage("<" + event.getPlayer().getName() + "> " + event.getMessage());
     }
 
     public static final List<String> whisperCommands = Arrays.asList("/w", "/minecraft:w", "/msg", "/minecraft:msg", "/tell", "/minecraft:tell");
@@ -67,7 +73,7 @@ public final class LiberatedChat extends JavaPlugin implements Listener {
             return;
         }
 
-        Player receiver = Bukkit.getPlayer(args[1]);
+        Player receiver = getServer().getPlayer(args[1]);
         if (receiver == null) {
             sender.sendMessage("§cPlayer not found");
             return;
