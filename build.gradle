@@ -19,6 +19,7 @@ archivesBaseName = "liberated-chat-1.1.6"
 def javaVersion = JavaVersion.VERSION_17
 
 java {
+	withSourcesJar()
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
     toolchain.languageVersion = JavaLanguageVersion.of(javaVersion.toString())
