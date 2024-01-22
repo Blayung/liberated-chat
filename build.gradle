@@ -6,7 +6,7 @@ repositories {
     mavenCentral()
     maven {
         name = "spigot-repo"
-        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots"
     }
 }
 
@@ -14,21 +14,15 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT"
 }
 
-archivesBaseName = "liberated-chat-1.2.1"
+archivesBaseName = "liberated-chat-1.2.2"
 
 def javaVersion = JavaVersion.VERSION_17
 
 java {
-	withSourcesJar()
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
-    toolchain.languageVersion = JavaLanguageVersion.of(javaVersion.toString())
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.release = javaVersion.toString() as Integer
 }
 
 jar {
-	from("LICENSE")
+	from("LICENSE.txt")
 }
