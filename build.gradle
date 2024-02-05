@@ -23,6 +23,4 @@ java {
     targetCompatibility = javaVersion
 }
 
-jar {
-	from("LICENSE.txt")
-}
+jar.from("LICENSE.txt")
