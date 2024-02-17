@@ -1,14 +1,14 @@
+plugins {
+    id "java"
+    id "com.modrinth.minotaur" version "2.+"
+}
+
 repositories {
+    mavenCentral()
     maven {
         name = "spigot-repo"
         url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots"
     }
-    gradlePluginPortal()
-}
-
-plugins {
-    id "java"
-    id "com.modrinth.minotaur" version "2.+"
 }
 
 dependencies {
@@ -36,4 +36,9 @@ modrinth {
     versionNumber = "1.2.2"
     gameVersions = ["1.19", "1.19.1", "1.19.2", "1.19.3", "1.19.4", "1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4"]
     loaders = ["bukkit", "paper", "purpur", "spigot"]
+}
+
+task modrinthUpload {
+    dependsOn "modrinth"
+    dependsOn "modrinthSyncBody"
 }
