@@ -1,0 +1,2 @@
+- Small code cleanup.
+- Fixed a bug with /msg where all the spaces in the message would get deleted.
