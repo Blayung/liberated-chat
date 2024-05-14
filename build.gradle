@@ -12,12 +12,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT"
+    compileOnly "org.spigotmc:spigot-api:1.20.6-R0.1-SNAPSHOT"
 }
 
-archivesBaseName = "liberated-chat-1.2.2"
+archivesBaseName = "liberated-chat-1.2.3"
 
-def javaVersion = JavaVersion.VERSION_17
+def javaVersion = JavaVersion.VERSION_21
 
 java {
     sourceCompatibility = javaVersion
@@ -32,9 +32,9 @@ modrinth {
     uploadFile = jar
     projectId = "liberated-chat"
     changelog = rootProject.file("MODRINTH_CHANGELOG.md").text
-    versionName = "Liberated Chat 1.2.2"
-    versionNumber = "1.2.2"
-    gameVersions = ["1.19", "1.19.1", "1.19.2", "1.19.3", "1.19.4", "1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4"]
+    versionName = "Liberated Chat 1.2.3"
+    versionNumber = "1.2.3"
+    gameVersions = ["1.19", "1.19.1", "1.19.2", "1.19.3", "1.19.4", "1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4", "1.20.5", "1.20.6"]
     loaders = ["bukkit", "paper", "purpur", "spigot"]
 }
 
