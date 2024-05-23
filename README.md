@@ -3,7 +3,7 @@
 # Liberated Chat
 
 ## What is this?
-It is probably the simplest minecraft spigot plugin that disables chat reporting.  
+This probably is the simplest minecraft spigot plugin that disables chat reporting.  
   
 **This plugin currently supports all minecraft versions from 1.19 to 1.20.6.**
 
